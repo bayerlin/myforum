@@ -18,5 +18,21 @@
 </table>
 
 <br />
+更新时间：
+<%= link_to_remote "更新",
+  :update => 'current_time',
+  :url => {:action => 'get_time'},
+  :before => "$('current_time').hide() ; $('indicate').show()" ,
+  :success => "$('current_time').visualEffect('highlight')",
+  :failure => "alert('There was an error.')",
+  :complete => "$('indicate').hide() ; $('current_time').show()" %>
+  <div id='indicate' style="display:none;">
+    loading ...
+  </div>
+  <div id = 'current_time'>
+    
+  </div>
+  
+<br />
 
 <%= link_to 'New forum', new_forum_path %>

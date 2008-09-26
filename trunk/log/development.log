@@ -9117,3 +9117,1650 @@ Rendering forums/index
   [4;35;1mUser Columns (0.001323)[0m   [0mSHOW FIELDS FROM `users`[0m
   [4;36;1mUser Load (0.000943)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
 Completed in 0.01466 (68 reqs/sec) | Rendering: 0.00517 (35%) | DB: 0.00369 (25%) | 200 OK [http://localhost/]
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000135)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000114)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000248)[0m   [0;1mCREATE DATABASE `myforum_development` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000136)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000109)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000347)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.023732)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.005188)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.000352)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000463)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000158)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000167)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000166)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateForums (20080905110015)
+  [4;36;1mSQL (0.000157)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.039472)[0m   [0mCREATE TABLE `forums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT NULL NULL, `description` text DEFAULT NULL NULL, `created_at` datetime DEFAULT NULL NULL, `updated_at` datetime DEFAULT NULL NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.015363)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080905110015')[0m
+Migrating to CreateTopics (20080905110318)
+  [4;35;1mSQL (0.000345)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.002555)[0m   [0;1mCREATE TABLE `topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `forum_id` int(11) DEFAULT NULL NULL, `user_id` int(11) DEFAULT NULL NULL, `subject` varchar(255) DEFAULT NULL NULL, `body` text DEFAULT NULL NULL, `created_at` datetime DEFAULT NULL NULL, `updated_at` datetime DEFAULT NULL NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.003781)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080905110318')[0m
+Migrating to CreateReplies (20080905110624)
+  [4;36;1mSQL (0.000419)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.029192)[0m   [0mCREATE TABLE `replies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `topic_id` int(11) DEFAULT NULL NULL, `user_id` int(11) DEFAULT NULL NULL, `subject` varchar(255) DEFAULT NULL NULL, `body` text DEFAULT NULL NULL, `created_at` datetime DEFAULT NULL NULL, `updated_at` datetime DEFAULT NULL NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080905110624')[0m
+Migrating to CreateUsers (20080906094343)
+  [4;35;1mSQL (0.000415)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000568)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.019886)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) DEFAULT NULL NULL, `email` varchar(255) DEFAULT NULL NULL, `remember_token` varchar(255) DEFAULT NULL NULL, `crypted_password` varchar(40) DEFAULT NULL NULL, `password_reset_code` varchar(40) DEFAULT NULL NULL, `salt` varchar(40) DEFAULT NULL NULL, `activation_code` varchar(40) DEFAULT NULL NULL, `remember_token_expires_at` datetime DEFAULT NULL NULL, `activated_at` datetime DEFAULT NULL NULL, `deleted_at` datetime DEFAULT NULL NULL, `state` varchar(255) DEFAULT 'passive' NULL, `created_at` datetime DEFAULT NULL NULL, `updated_at` datetime DEFAULT NULL NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000559)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080906094343')[0m
+  [4;35;1mSQL (0.000514)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000465)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.001319)[0m   [0mSHOW FIELDS FROM `forums`[0m
+  [4;36;1mSQL (0.001406)[0m   [0;1mdescribe `forums`[0m
+  [4;35;1mSQL (0.001138)[0m   [0mSHOW KEYS FROM `forums`[0m
+  [4;36;1mSQL (0.001462)[0m   [0;1mSHOW FIELDS FROM `replies`[0m
+  [4;35;1mSQL (0.001370)[0m   [0mdescribe `replies`[0m
+  [4;36;1mSQL (0.001115)[0m   [0;1mSHOW KEYS FROM `replies`[0m
+  [4;35;1mSQL (0.001475)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (0.001365)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.001134)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (0.001960)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.001869)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.001187)[0m   [0;1mSHOW KEYS FROM `users`[0m
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-12 15:31:23) [GET]
+  Session ID: 85327404a8a5542fd814c5a174b102b0
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000309)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000262)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mForum Load (0.001546)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.04517 (22 reqs/sec) | Rendering: 0.01541 (34%) | DB: 0.00212 (4%) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2008-09-12 15:55:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--40550a11d511dcbe70bffc271829334ed0464741
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 0.01502 (66 reqs/sec) | Rendering: 0.00802 (53%) | DB: 0.00000 (0%) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2008-09-12 15:56:13) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlMjQ1Y2E4NDIyZTc0YjU1YTYyZjMwOGMyODY3NzI2
+NGIiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--9d6fd01dd5d752630d53600f876b911f089e1de8
+  Parameters: {"user"=>{"password_confirmation"=>"test888", "login"=>"bayerlin", "password"=>"test888", "email"=>"bayerlin@gmail.com"}, "commit"=>"Sign up", "authenticity_token"=>"de70f0dd95e3d0884bb090c1e50812e3cfb85d1f", "action"=>"create", "controller"=>"users"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [4;35;1mUser Columns (0.004340)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.001310)[0m   [0;1mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'bayerlin') [0m
+  [4;35;1mSQL (0.001047)[0m   [0mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'bayerlin@gmail.com') [0m
+  [4;36;1mSQL (0.000413)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.000937)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `deleted_at`, `activation_code`, `remember_token_expires_at`, `password_reset_code`, `remember_token`, `login`, `email`, `state`, `created_at`) VALUES('d403c4a95ec9aed6ba9686241e60092730178bdd', NULL, '2008-09-12 07:56:13', '518ec81c628b96d7c34bf117c80b639c58dd92d9', NULL, '3770d2cd9dfe9cdfb70e0fbb426f162b9410ae32', NULL, NULL, NULL, 'bayerlin', 'bayerlin@gmail.com', 'pending', '2008-09-12 07:56:13')[0m
+Sent mail to bayerlin@gmail.com
+
+Date: Fri, 12 Sep 2008 15:56:13 +0800
+From: ADMINEMAIL
+To: bayerlin@gmail.com
+Subject: [Rails Forum] New account information Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: bayerlin
+  Password: test888
+
+Visit this url to activate your account:
+
+  http://localhost:3000/activate/3770d2cd9dfe9cdfb70e0fbb426f162b9410ae32
+  [4;36;1mSQL (0.005951)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering users/create
+Completed in 0.09580 (10 reqs/sec) | Rendering: 0.00607 (6%) | DB: 0.01400 (14%) | 200 OK [http://localhost/users]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-09-12 15:56:31) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlMjQ1Y2E4NDIyZTc0YjU1YTYyZjMwOGMyODY3NzI2
+NGIiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7BjoLbm90aWNlIhtUaGFua3MgZm9yIHNpZ25pbmcgdXAhBjoKQHVzZWR7
+BjsHRg==--bdf78d20d1faed113fa19d16cdf6843686e6b201
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 0.02052 (48 reqs/sec) | Rendering: 0.01304 (63%) | DB: 0.00000 (0%) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2008-09-12 15:56:38) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlMjQ1Y2E4NDIyZTc0YjU1YTYyZjMwOGMyODY3NzI2
+NGIiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7BjoLbm90aWNlIhtUaGFua3MgZm9yIHNpZ25pbmcgdXAhBjoKQHVzZWR7
+BjsHVA==--cee267f697bd35ba0aac1e7ea253c7879622a33d
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"de70f0dd95e3d0884bb090c1e50812e3cfb85d1f", "action"=>"create", "controller"=>"sessions", "password"=>"mv5529", "login"=>"bayerlin", "remember_me"=>"1"}
+  [4;35;1mUser Load (0.002988)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'bayerlin') AND (users.state = 'active') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 0.01716 (58 reqs/sec) | Rendering: 0.00493 (28%) | DB: 0.00299 (17%) | 200 OK [http://localhost/session]
+
+
+Processing UsersController#forgot_password (for 127.0.0.1 at 2008-09-12 15:58:30) [GET]
+  Session ID: BAh7CDoMdXNlcl9pZDA6DGNzcmZfaWQiJTI0NWNhODQyMmU3NGI1NWE2MmYz
+MDhjMjg2NzcyNjRiIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFz
+aDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--c319c4364a7313e31725e4a43fccd72122765feb
+  Parameters: {"action"=>"forgot_password", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/forgot_password
+Completed in 0.02362 (42 reqs/sec) | Rendering: 0.01484 (62%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forgot_password]
+
+
+Processing UsersController#forgot_password (for 127.0.0.1 at 2008-09-12 15:58:36) [POST]
+  Session ID: BAh7CDoMdXNlcl9pZDA6DGNzcmZfaWQiJTI0NWNhODQyMmU3NGI1NWE2MmYz
+MDhjMjg2NzcyNjRiIgpmbGFzaElDOidBY3Rpb25Db250cm9sbGVyOjpGbGFz
+aDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--c319c4364a7313e31725e4a43fccd72122765feb
+  Parameters: {"user"=>{"email"=>"bayerlin@gmail.com"}, "commit"=>"Send", "authenticity_token"=>"de70f0dd95e3d0884bb090c1e50812e3cfb85d1f", "action"=>"forgot_password", "controller"=>"users"}
+  [4;36;1mUser Columns (0.005510)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.003625)[0m   [0mSELECT * FROM `users` WHERE (`users`.`email` = 'bayerlin@gmail.com') LIMIT 1[0m
+  [4;36;1mSQL (0.000400)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.001390)[0m   [0mSELECT `login` FROM `users` WHERE (LOWER(`users`.login) = 'bayerlin' AND `users`.id <> 1) [0m
+  [4;36;1mSQL (0.001418)[0m   [0;1mSELECT `email` FROM `users` WHERE (LOWER(`users`.email) = 'bayerlin@gmail.com' AND `users`.id <> 1) [0m
+  [4;35;1mUser Update (0.001040)[0m   [0mUPDATE `users` SET `password_reset_code` = '7ddb50b8c9061d882e0c5c96107cef1e1e113e2a', `updated_at` = '2008-09-12 07:58:37' WHERE `id` = 1[0m
+Sent mail to bayerlin@gmail.com
+
+Date: Fri, 12 Sep 2008 15:58:37 +0800
+From: ADMINEMAIL
+To: bayerlin@gmail.com
+Subject: [Rails Forum] New account information You have requested to change your password
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Dear bayerlin,
+
+We have had a request to reset your password, please visit
+http://localhost:3000/reset_password/7ddb50b8c9061d882e0c5c96107cef1e1e113e2a
+
+
+  [4;36;1mSQL (0.005935)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 0.06844 (14 reqs/sec) | DB: 0.01932 (28%) | 302 Found [http://localhost/forgot_password]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-12 15:58:37) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvMDoMdXNlcl9pZDA6DGNzcmZfaWQiJTI0NWNhODQy
+MmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElDOidBY3Rpb25Db250
+cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGljZSI+QSBwYXNzd29y
+ZCByZXNldCBsaW5rIGhhcyBiZWVuIHNlbnQgdG8geW91ciBlbWFpbCBhZGRy
+ZXNzBjoKQHVzZWR7BjsJRg==--41979d50fdf662476c431d3e111192a912899c88
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.000546)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01122 (89 reqs/sec) | Rendering: 0.00132 (11%) | DB: 0.00055 (4%) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2008-09-12 16:00:49) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvMDoMdXNlcl9pZDA6DGNzcmZfaWQiJTI0NWNhODQy
+MmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElDOidBY3Rpb25Db250
+cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGljZSI+QSBwYXNzd29y
+ZCByZXNldCBsaW5rIGhhcyBiZWVuIHNlbnQgdG8geW91ciBlbWFpbCBhZGRy
+ZXNzBjoKQHVzZWR7BjsJVA==--f5f2fbd6da016a510cf0f99546cb33b519643e11
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/contact" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/routing/route_set.rb:384:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:112:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:78:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:62:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/webrick.rb:66
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2008-09-12 16:01:02) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvMDoMdXNlcl9pZDA6DGNzcmZfaWQiJTI0NWNhODQy
+MmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElDOidBY3Rpb25Db250
+cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNlZHsA--01b285109e2c6ea8ca420e455f1cf2cd5503dfef
+  Parameters: {"action"=>"new", "controller"=>"forums"}
+Redirected to http://localhost:3000/forums
+Filter chain halted as [:admin_required] rendered_or_redirected.
+Completed in 0.00151 (660 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/forums/new]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-12 16:01:02) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlG--00b1af2f5bb5e71396b3d2ec09eb58f77075b3a6
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.001190)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.02500 (39 reqs/sec) | Rendering: 0.00331 (13%) | DB: 0.00119 (4%) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2008-09-12 16:01:05) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlU--42611892cadcea59cfe9aa1151cf04307bc39316
+  Parameters: {"action"=>"new", "controller"=>"forums"}
+Redirected to http://localhost:3000/forums
+Filter chain halted as [:admin_required] rendered_or_redirected.
+Completed in 0.00087 (1153 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/forums/new]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-12 16:01:05) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlG--00b1af2f5bb5e71396b3d2ec09eb58f77075b3a6
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.000689)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01377 (72 reqs/sec) | Rendering: 0.00170 (12%) | DB: 0.00069 (5%) | 200 OK [http://localhost/forums]
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2008-09-12 16:01:07) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlU--42611892cadcea59cfe9aa1151cf04307bc39316
+  Parameters: {"action"=>"new", "controller"=>"forums"}
+Redirected to http://localhost:3000/forums
+Filter chain halted as [:admin_required] rendered_or_redirected.
+Completed in 0.00071 (1412 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/forums/new]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-12 16:01:07) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlG--00b1af2f5bb5e71396b3d2ec09eb58f77075b3a6
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.000691)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01315 (76 reqs/sec) | Rendering: 0.00163 (12%) | DB: 0.00069 (5%) | 200 OK [http://localhost/forums]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2008-09-12 16:01:08) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewY6C25vdGlj
+ZSIlWW91IG11c3QgYmUgYW4gYWRtaW4gdG8gZG8gdGhhdC4GOgpAdXNlZHsG
+OwlU--42611892cadcea59cfe9aa1151cf04307bc39316
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 0.00930 (107 reqs/sec) | Rendering: 0.00447 (48%) | DB: 0.00000 (0%) | 200 OK [http://localhost/signup]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2008-09-12 16:01:11) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl
+ZHsA--ab538b5725338cdbc93ff56b2f456f5b032e23ac
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/contact" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/routing/route_set.rb:384:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:112:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:78:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:62:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/webrick.rb:66
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-09-12 16:01:19) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl
+ZHsA--ab538b5725338cdbc93ff56b2f456f5b032e23ac
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 0.01287 (77 reqs/sec) | Rendering: 0.00561 (43%) | DB: 0.00000 (0%) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2008-09-12 16:01:21) [GET]
+  Session ID: BAh7CToOcmV0dXJuX3RvIhAvZm9ydW1zL25ldzoMdXNlcl9pZDA6DGNzcmZf
+aWQiJTI0NWNhODQyMmU3NGI1NWE2MmYzMDhjMjg2NzcyNjRiIgpmbGFzaElD
+OidBY3Rpb25Db250cm9sbGVyOjpGbGFzaDo6Rmxhc2hIYXNoewAGOgpAdXNl
+ZHsA--ab538b5725338cdbc93ff56b2f456f5b032e23ac
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 0.00538 (185 reqs/sec) | Rendering: 0.00234 (43%) | DB: 0.00000 (0%) | 200 OK [http://localhost/signup]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-25 10:23:48) [GET]
+  Session ID: 5d38bbf5b32eca582c430846f25d46d9
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000300)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000151)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mForum Load (0.000755)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.03064 (32 reqs/sec) | Rendering: 0.00763 (24%) | DB: 0.00121 (3%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#new (for 127.0.0.1 at 2008-09-25 10:23:57) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--40550a11d511dcbe70bffc271829334ed0464741
+  Parameters: {"action"=>"new", "controller"=>"forums"}
+Redirected to http://localhost:3000/forums
+Filter chain halted as [:admin_required] rendered_or_redirected.
+Completed in 0.00161 (620 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/forums/new]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-25 10:23:57) [GET]
+  Session ID: BAh7BzoOcmV0dXJuX3RvIhAvZm9ydW1zL25ldyIKZmxhc2hJQzonQWN0aW9u
+Q29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsGOgtub3RpY2UiJVlvdSBt
+dXN0IGJlIGFuIGFkbWluIHRvIGRvIHRoYXQuBjoKQHVzZWR7BjsHRg==--e5e4f38ca45f319a57ac35d2c893a97ee31de0e4
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.001365)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.03935 (25 reqs/sec) | Rendering: 0.01346 (34%) | DB: 0.00136 (3%) | 200 OK [http://localhost/forums]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2008-09-25 10:24:04) [GET]
+  Session ID: BAh7BzoOcmV0dXJuX3RvIhAvZm9ydW1zL25ldyIKZmxhc2hJQzonQWN0aW9u
+Q29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsGOgtub3RpY2UiJVlvdSBt
+dXN0IGJlIGFuIGFkbWluIHRvIGRvIHRoYXQuBjoKQHVzZWR7BjsHVA==--4a5d159bbf64219a6b496e15b721d1c55ef3d921
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 0.02852 (35 reqs/sec) | Rendering: 0.02134 (74%) | DB: 0.00000 (0%) | 200 OK [http://localhost/signup]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-25 17:04:42) [GET]
+  Session ID: d6cf3c5b65369d1acf14d97349805469
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000357)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000308)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mForum Load (0.001658)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.08280 (12 reqs/sec) | Rendering: 0.03041 (36%) | DB: 0.00232 (2%) | 200 OK [http://localhost/]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2008-09-25 17:04:48) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--40550a11d511dcbe70bffc271829334ed0464741
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 0.01559 (64 reqs/sec) | Rendering: 0.00860 (55%) | DB: 0.00000 (0%) | 200 OK [http://localhost/signup]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:36:57) [GET]
+  Session ID: 616c97a3f7833090a887b8f4a1230cdf
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library is not suited for production. Please install the C-based MySQL library instead (gem install mysql).
+  [4;36;1mSQL (0.000167)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000140)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mForum Load (0.000667)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.04235 (23 reqs/sec) | Rendering: 0.02765 (65%) | DB: 0.00097 (2%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:38:30) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.000694)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01951 (51 reqs/sec) | Rendering: 0.00541 (27%) | DB: 0.00069 (3%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:33) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00940 (106 reqs/sec) | Rendering: 0.00116 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:36) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00828 (120 reqs/sec) | Rendering: 0.00108 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:38) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00828 (120 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:39) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00891 (112 reqs/sec) | Rendering: 0.00114 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:41) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00856 (116 reqs/sec) | Rendering: 0.00118 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:43) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00823 (121 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:44) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00803 (124 reqs/sec) | Rendering: 0.00105 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:45) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00943 (106 reqs/sec) | Rendering: 0.00155 (16%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:48) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00818 (122 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:49) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.01006 (99 reqs/sec) | Rendering: 0.00115 (11%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:50) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00816 (122 reqs/sec) | Rendering: 0.00109 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:52) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00857 (116 reqs/sec) | Rendering: 0.00113 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:54) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00933 (107 reqs/sec) | Rendering: 0.00112 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:56) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00875 (114 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:38:58) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00827 (120 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:00) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00827 (120 reqs/sec) | Rendering: 0.00108 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:03) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00829 (120 reqs/sec) | Rendering: 0.00108 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:04) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00817 (122 reqs/sec) | Rendering: 0.00105 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:06) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00881 (113 reqs/sec) | Rendering: 0.00109 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:06) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00364 (274 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:07) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00363 (275 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:08) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00694 (144 reqs/sec) | Rendering: 0.00052 (7%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:09) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00425 (235 reqs/sec) | Rendering: 0.00054 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:10) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00460 (217 reqs/sec) | Rendering: 0.00061 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:11) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00463 (215 reqs/sec) | Rendering: 0.00063 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:39:12) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.08565 (11 reqs/sec) | Rendering: 0.00071 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:40:44) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00826 (121 reqs/sec) | Rendering: 0.00108 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:40:45) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00827 (120 reqs/sec) | Rendering: 0.00106 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:40:46) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00824 (121 reqs/sec) | Rendering: 0.00107 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:41:45) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00395 (252 reqs/sec) | Rendering: 0.00054 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:41:45) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00370 (270 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:43:40) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.000533)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01489 (67 reqs/sec) | Rendering: 0.00366 (24%) | DB: 0.00053 (3%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:43:43) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00876 (114 reqs/sec) | Rendering: 0.00110 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:43:46) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00829 (120 reqs/sec) | Rendering: 0.00109 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:43:48) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00365 (274 reqs/sec) | Rendering: 0.00052 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:43:49) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00366 (272 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:43:51) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00379 (264 reqs/sec) | Rendering: 0.00054 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:44:05) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00371 (269 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:44:07) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00360 (278 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:44:09) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.07184 (13 reqs/sec) | Rendering: 0.00061 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:44:10) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00374 (267 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:44:11) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00365 (274 reqs/sec) | Rendering: 0.00051 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:45:31) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.000541)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+ERROR: compiling _run_erb_47app47views47forums47index46html46erb RAISED compile error
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:25: syntax error, unexpected ',', expecting tASSOC
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:26: syntax error, unexpected ',', expecting ')'
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:27: syntax error, unexpected ',', expecting ')'
+Function body: def _run_erb_47app47views47forums47index46html46erb(local_assigns)
+_erbout = ''; _erbout.concat "<h1>Listing forums</h1>\n"
+_erbout.concat "\n"
+_erbout.concat "<table>\n"
+_erbout.concat "  <tr>\n"
+_erbout.concat "    <th>Name</th>\n"
+_erbout.concat "    <th>Description</th>\n"
+_erbout.concat "  </tr>\n"
+_erbout.concat "\n"
+ for forum in @forums ; _erbout.concat "\n"
+_erbout.concat "  <tr>\n"
+_erbout.concat "    <td>"; _erbout.concat((h forum.name ).to_s); _erbout.concat "</td>\n"
+_erbout.concat "    <td>"; _erbout.concat((h forum.description ).to_s); _erbout.concat "</td>\n"
+_erbout.concat "    <td>"; _erbout.concat(( link_to 'Show', forum ).to_s); _erbout.concat "</td>\n"
+_erbout.concat "    <td>"; _erbout.concat(( link_to 'Edit', edit_forum_path(forum) ).to_s); _erbout.concat "</td>\n"
+_erbout.concat "    <td>"; _erbout.concat(( link_to 'Destroy', forum, :confirm => 'Are you sure?', :method => :delete ).to_s); _erbout.concat "</td>\n"
+_erbout.concat "  </tr>\n"
+ end ; _erbout.concat "\n"
+_erbout.concat "</table>\n"
+_erbout.concat "\n"
+_erbout.concat "<br />\n"
+_erbout.concat "\346\233\264\346\226\260\346\227\266\351\227\264\357\274\232\n"
+_erbout.concat(( link_to_remote "更新",
+  :update => 'current_time',
+  :url => {:action => 'get_time'},
+  :before => "$('indicate').show()","$('current_time').hide()",
+  :success => "$('current_time').visualEffect('highlight')",
+  :failure => "alert('There was an error.')",
+  :complete => "$('indicate').hide()" ).to_s); _erbout.concat "\n"
+_erbout.concat "  <div id='indicate' style=\"display:none;\">\n"
+_erbout.concat "    loading ...\n"
+_erbout.concat "  </div>\n"
+_erbout.concat "  <div id = 'current_time'>\n"
+_erbout.concat "    \n"
+_erbout.concat "  </div>\n"
+_erbout.concat "  \n"
+_erbout.concat "<br />\n"
+_erbout.concat "\n"
+_erbout.concat(( link_to 'New forum', new_forum_path ).to_s); _erbout.concat "\n"
+_erbout
+end
+Backtrace: /home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:40:in `compile_template'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:55:in `prepare!'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:34:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:245:in `render_file'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1108:in `render_for_file'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:865:in `render_with_no_layout'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:880:in `render_with_no_layout'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/layout.rb:251:in `render_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `send'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `custom'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `respond'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `each'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `respond'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/home/bayerlin/www/myforum/trunk/app/controllers/forums_controller.rb:8:in `index'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+/usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:112:in `handle_dispatch'
+/usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:78:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:37:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:62:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/webrick.rb:66
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+/usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+/usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:25: syntax error, unexpected ',', expecting tASSOC
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:26: syntax error, unexpected ',', expecting ')'
+/home/bayerlin/www/myforum/trunk/app/views/forums/index.html.erb:27: syntax error, unexpected ',', expecting ')') on line #25 of forums/index.html.erb:
+22: <%= link_to_remote "更新",
+23:   :update => 'current_time',
+24:   :url => {:action => 'get_time'},
+25:   :before => "$('indicate').show()","$('current_time').hide()",
+26:   :success => "$('current_time').visualEffect('highlight')",
+27:   :failure => "alert('There was an error.')",
+28:   :complete => "$('indicate').hide()" %>
+
+    app/views/forums/index.html.erb:40:in `compile_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:55:in `prepare!'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:34:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:245:in `render_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1108:in `render_for_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:865:in `render_with_no_layout'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:880:in `render_with_no_layout'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/layout.rb:251:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `custom'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `each'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/forums_controller.rb:8:in `index'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:112:in `handle_dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:78:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:37:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/webrick_server.rb:62:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/webrick.rb:66
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:46:15) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.000567)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01350 (74 reqs/sec) | Rendering: 0.00371 (27%) | DB: 0.00057 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:17) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00825 (121 reqs/sec) | Rendering: 0.00118 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:19) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00904 (110 reqs/sec) | Rendering: 0.00111 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:20) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00373 (268 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:21) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00811 (123 reqs/sec) | Rendering: 0.00104 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:23) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.01028 (97 reqs/sec) | Rendering: 0.00117 (11%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:23) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00991 (100 reqs/sec) | Rendering: 0.00176 (17%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:25) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00379 (263 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:46:26) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00458 (218 reqs/sec) | Rendering: 0.00061 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:47:51) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.000698)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01739 (57 reqs/sec) | Rendering: 0.00482 (27%) | DB: 0.00070 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:47:56) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00931 (107 reqs/sec) | Rendering: 0.00110 (11%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:47:58) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00465 (215 reqs/sec) | Rendering: 0.00062 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:00) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00429 (232 reqs/sec) | Rendering: 0.00090 (21%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:02) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00383 (261 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:04) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00363 (275 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:05) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00363 (275 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:06) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00378 (264 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:07) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00362 (276 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:08) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00371 (269 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:09) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00397 (251 reqs/sec) | Rendering: 0.00055 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:10) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00372 (268 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:11) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00370 (270 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:13) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00366 (273 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:14) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00391 (255 reqs/sec) | Rendering: 0.00060 (15%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:15) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00372 (268 reqs/sec) | Rendering: 0.00052 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:16) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00448 (223 reqs/sec) | Rendering: 0.00051 (11%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:16) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00402 (248 reqs/sec) | Rendering: 0.00054 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:17) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00373 (268 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:18) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00370 (270 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:19) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00369 (271 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:20) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00385 (259 reqs/sec) | Rendering: 0.00052 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:21) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00413 (242 reqs/sec) | Rendering: 0.00057 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:22) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00367 (272 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:24) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.07183 (13 reqs/sec) | Rendering: 0.00061 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:48:24) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00388 (257 reqs/sec) | Rendering: 0.00052 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:49:25) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.001165)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.02945 (33 reqs/sec) | Rendering: 0.00819 (27%) | DB: 0.00117 (3%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:29) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00827 (120 reqs/sec) | Rendering: 0.00109 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:31) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00379 (263 reqs/sec) | Rendering: 0.00052 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:34) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00417 (239 reqs/sec) | Rendering: 0.00055 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:36) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00368 (271 reqs/sec) | Rendering: 0.00049 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:38) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00424 (236 reqs/sec) | Rendering: 0.00054 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:40) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00376 (265 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:43) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00462 (216 reqs/sec) | Rendering: 0.00061 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:44) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00374 (267 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:46) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00385 (259 reqs/sec) | Rendering: 0.00059 (15%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:49:47) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00368 (271 reqs/sec) | Rendering: 0.00052 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:50:36) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.001196)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.02530 (39 reqs/sec) | Rendering: 0.00393 (15%) | DB: 0.00120 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:50:37) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.000584)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01216 (82 reqs/sec) | Rendering: 0.00190 (15%) | DB: 0.00058 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:50:39) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00416 (240 reqs/sec) | Rendering: 0.00058 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:50:52) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00802 (124 reqs/sec) | Rendering: 0.00106 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:50:53) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00401 (249 reqs/sec) | Rendering: 0.00054 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:55:02) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;35;1mForum Load (0.001302)[0m   [0mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.03021 (33 reqs/sec) | Rendering: 0.00845 (27%) | DB: 0.00130 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:04) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00371 (269 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:06) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00391 (255 reqs/sec) | Rendering: 0.00054 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:10) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00369 (270 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:12) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00368 (272 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:14) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00364 (274 reqs/sec) | Rendering: 0.00052 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:16) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00446 (224 reqs/sec) | Rendering: 0.00058 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:17) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00375 (266 reqs/sec) | Rendering: 0.00057 (15%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:18) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00404 (247 reqs/sec) | Rendering: 0.00087 (21%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:19) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00535 (186 reqs/sec) | Rendering: 0.00057 (10%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:20) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00367 (272 reqs/sec) | Rendering: 0.00053 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:21) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00391 (255 reqs/sec) | Rendering: 0.00059 (14%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:23) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00366 (273 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:24) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00383 (260 reqs/sec) | Rendering: 0.00052 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:25) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00376 (265 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:26) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00376 (265 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:33) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00804 (124 reqs/sec) | Rendering: 0.00104 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:36) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00856 (116 reqs/sec) | Rendering: 0.00111 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:40) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00462 (216 reqs/sec) | Rendering: 0.00064 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:55:42) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00369 (271 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#index (for 127.0.0.1 at 2008-09-26 16:58:31) [GET]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"action"=>"index", "controller"=>"forums"}
+  [4;36;1mForum Load (0.000567)[0m   [0;1mSELECT * FROM `forums` [0m
+Rendering template within layouts/application
+Rendering forums/index
+Completed in 0.01387 (72 reqs/sec) | Rendering: 0.00381 (27%) | DB: 0.00057 (4%) | 200 OK [http://localhost/]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:33) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.01419 (70 reqs/sec) | Rendering: 0.00643 (45%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:36) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00506 (197 reqs/sec) | Rendering: 0.00065 (12%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:39) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00441 (226 reqs/sec) | Rendering: 0.00093 (21%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:41) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00372 (269 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:43) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00368 (271 reqs/sec) | Rendering: 0.00050 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]
+
+
+Processing ForumsController#get_time (for 127.0.0.1 at 2008-09-26 16:58:46) [POST]
+  Session ID: BAh7BzoMY3NyZl9pZCIlODQ4MDUwNjI3MDNmODdlNWViMzljYTgwODk5MzBm
+NDkiCmZsYXNoSUM6J0FjdGlvbkNvbnRyb2xsZXI6OkZsYXNoOjpGbGFzaEhh
+c2h7AAY6CkB1c2VkewA=--043f7c2fd027e97798c04b2ea60a5854032cd6fc
+  Parameters: {"authenticity_token"=>"4b18add9e9c76a4eef14c69a8ccb61fef94a2f4a", "action"=>"get_time", "controller"=>"forums"}
+Completed in 0.00383 (260 reqs/sec) | Rendering: 0.00051 (13%) | DB: 0.00000 (0%) | 200 OK [http://localhost/forums/get_time]

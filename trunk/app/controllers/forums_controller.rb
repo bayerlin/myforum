@@ -11,6 +11,11 @@ class ForumsController < ApplicationController
     end
   end
 
+  def get_time
+    render :text => Time.now
+  end
+  
+
   # GET /forums/1
   # GET /forums/1.xml
   def show
