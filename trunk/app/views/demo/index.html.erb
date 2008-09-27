@@ -1,0 +1,35 @@
+<h1>What the time is? </h1>
+
+<p>please <%= link_to_remote "click me ",
+              :update => "time_div",
+              :url => {:action => :say_when},
+              :position => 'top' %>
+  and you will know.
+</p>
+<div id="time_div" style="background-color:#99e3e3;">
+ div time div 
+</div>
+<br />
+<h1>Ajax Add list</h1>
+<% form_remote_tag :url => {:action => "add_list"},
+                  :update => "item_list",
+                  :position => "bottom"  do %>
+    <%= text_field_tag :newitem %>
+    <%= submit_tag "Add New Item" %>
+  <% end %>
+<div id="item_list">
+  <li>Original item ... please add more!</li>
+</div>
+<h1 id="">Live search</h1>
+<form>
+<%= text_field_tag :searchtext %>
+<%= observe_field :searchtext,
+  :frequency => 0.25,
+  :update => :search_hits,
+  :url => {:action => :live_search }
+%>
+<p>Search results:</p>
+<div id="search_hits">
+  
+</div>
+</form>

@@ -30,13 +30,15 @@
 
 <div class="subHeader">
 <span class="doNotDisplay">Navigation:</span>
+<%= link_to 'index', '/' %>
 <% if user_logged_in? %>
-<%= link_to 'Logout', logout_url %>
+|<%= link_to 'Logout', logout_url %>
 <% else %>
-<%= link_to "Signup", signup_url %>
+|<%= link_to "Signup", signup_url %>
 | <%= link_to 'Login', login_url %>
 <% end %>
 | <%= link_to 'Contact Us', 'contact' %>
+| <%= link_to 'Demo', 'demo' %>
 </div>
 
 </div>
